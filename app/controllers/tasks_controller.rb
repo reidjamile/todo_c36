@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :set_task, only: [:destroy]
+  before_action :set_task, only: [:update, :destroy]
 
   # GET /tasks
   def index
@@ -28,6 +28,11 @@ class TasksController < ApplicationController
     else
       redirect_to root_path, alert: @task.errors.full_messages.join(', ')
     end
+  end
+
+  def update 
+    @task.update(completed: !@task.completed)
+    redirect_to root_path, notice: 'Task was successfully updated.'
   end
 
   # DELETE /tasks/1

@@ -2,5 +2,5 @@
 
 Rails.application.routes.draw do
   root 'tasks#index'
-  resources :tasks, only: [:create, :destroy]
+  resources :tasks, only: [:create, :destroy, :update]
 end
